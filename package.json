@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "preact": "^10.28.3",
+    "@preact/signals": "^2.7.0"
+  }
+}
