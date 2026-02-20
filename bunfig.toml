@@ -1,0 +1,7 @@
+[build]
+target = "browser"
+format = "esm"
+jsx = "react-jsx"
+jsxImportSource = "preact"
+sourcemap = "external"
+minify = false

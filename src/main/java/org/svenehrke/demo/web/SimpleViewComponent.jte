@@ -4,3 +4,4 @@
 <h3>SimpleViewComponent</h3>
 
 <div>${ctx.helloWorld()}</div>
+cd front
