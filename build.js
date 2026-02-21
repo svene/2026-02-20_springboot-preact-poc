@@ -1,8 +1,10 @@
 import { build } from "bun";
 import { readdirSync, statSync } from "fs";
-import { join } from "path";
+import { join, relative, dirname } from "path";
+import { mkdirSync } from "fs";
 
 const base = "src/main/java/org/svenehrke/demo/web";
+const outdir = "dist";
 
 function collectTsxFiles(dir) {
 	let files = [];
@@ -19,15 +21,19 @@ function collectTsxFiles(dir) {
 
 const entrypoints = collectTsxFiles(base);
 
-await build({
-	entrypoints,
-	outdir: "dist",
-	target: "browser",
-	format: "esm",
-	jsx: {
-		mode: "react-jsx",
-		importSource: "preact"
-	}
-});
+for (const file of entrypoints) {
+	// Compute relative path and create subfolder in dist
+	const relPath = relative(base, file);          // e.g., foo/Hello.tsx
+	const outPathDir = join(outdir, dirname(relPath));
+	mkdirSync(outPathDir, { recursive: true });
 
-console.log("✅ Built all TSX files into frontend/dist");
+	await build({
+		entrypoints: [file],
+		outdir: outPathDir,
+		target: "browser",
+		format: "esm",
+		jsx: { mode: "react-jsx", importSource: "preact" }
+	});
+}
+
+console.log("✅ Built all TSX files into frontend/dist with folder structure preserved");
