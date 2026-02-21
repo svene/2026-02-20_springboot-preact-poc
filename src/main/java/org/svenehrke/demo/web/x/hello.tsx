@@ -1,4 +1,4 @@
-import { render } from "preact";
+import { render, h } from "preact";
 
 export function mountHello(elementId: string, name: string) {
 	const el = document.getElementById(elementId);
@@ -10,3 +10,9 @@ export function mountHello(elementId: string, name: string) {
 
 	render(<App />, el);
 }
+
+function App2() {
+	return <h1>Hello there</h1>;
+}
+
+export {render, h, App2}
