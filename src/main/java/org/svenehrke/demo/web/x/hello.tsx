@@ -11,8 +11,8 @@ export function mountHello(elementId: string, name: string) {
 	render(<App />, el);
 }
 
-function App2() {
-	return <h1>Hello there</h1>;
+function App2(props: {message: string}) {
+	return <h1>Hello {props.message}</h1>;
 }
 
 export {render, h, App2}

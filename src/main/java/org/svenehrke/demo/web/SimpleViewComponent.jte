@@ -23,6 +23,6 @@
 
 <hr>
 <h3>Island</h3>
-<div data-island="x/hello" data-props='{"message": "hello world"}'></div>
+<div data-island="x/hello" data-props='{"message": "World!"}'></div>
 
 </body>
