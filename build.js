@@ -4,7 +4,7 @@ import { join, relative, dirname } from "path";
 import { mkdirSync } from "fs";
 
 const base = "src/main/java/org/svenehrke/demo/web";
-const outdir = "dist";
+const outdir = "src/main/resources/static/fe";
 
 function collectTsxFiles(dir) {
 	let files = [];

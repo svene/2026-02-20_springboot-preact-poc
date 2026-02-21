@@ -4,4 +4,9 @@
 <h3>SimpleViewComponent</h3>
 
 <div>${ctx.helloWorld()}</div>
-cd front
+
+<div id="hello"></div>
+<script type="module">
+	import { mountHello } from "/assets/fe/x/hello.js";
+	mountHello("hello", "sven");
+</script>
