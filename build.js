@@ -19,21 +19,24 @@ function collectTsxFiles(dir) {
 	return files;
 }
 
-const entrypoints = collectTsxFiles(base);
+async function runBuild() {
+	const entrypoints = collectTsxFiles(base);
 
-for (const file of entrypoints) {
-	// Compute relative path and create subfolder in dist
-	const relPath = relative(base, file);          // e.g., foo/Hello.tsx
-	const outPathDir = join(outdir, dirname(relPath));
-	mkdirSync(outPathDir, { recursive: true });
+	for (const file of entrypoints) {
+		const relPath = relative(base, file);
+		const outPathDir = join(outdir, dirname(relPath));
+		mkdirSync(outPathDir, { recursive: true });
 
-	await build({
-		entrypoints: [file],
-		outdir: outPathDir,
-		target: "browser",
-		format: "esm",
-		jsx: { mode: "react-jsx", importSource: "preact" }
-	});
+		await build({
+			entrypoints: [file],
+			outdir: outPathDir,
+			target: "browser",
+			format: "esm",
+			jsx: { mode: "react-jsx", importSource: "preact" }
+		});
+	}
+
+	console.log("✅ Build complete");
 }
 
-console.log("✅ Built all TSX files into frontend/dist with folder structure preserved");
+await runBuild();

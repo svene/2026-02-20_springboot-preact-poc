@@ -1,0 +1,34 @@
+import {watch} from "fs";
+import {resolve} from "path";
+
+const scanRoot = resolve(import.meta.dir, "src/main/java");
+
+async function build(filename: string) {
+	if (!filename) {
+		return;
+	}
+	console.log(`${new Date().toLocaleTimeString()} BUILD ${filename}.`);
+	const proc = Bun.spawn(["bun", "build.js"], {
+		cwd: import.meta.dir,
+		stdout: "inherit",
+		stderr: "inherit",
+	});
+	await proc.exited;
+}
+
+async function main() {
+	console.log(`Watching ${scanRoot} for .tsx changes...`);
+
+	let debounce: Timer | null = null;
+	watch(scanRoot, {recursive: true}, (event, filename) => {
+		if (!filename?.endsWith(".tsx")) return;
+		if (debounce) clearTimeout(debounce);
+		debounce = setTimeout(async () => {
+			console.log(`\n${filename} changed, rebuilding...`);
+			await build(filename);
+		}, 200);
+	});
+}
+
+await main();
+

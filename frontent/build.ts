@@ -19,6 +19,7 @@ if (entrypoints.length > 0) {
 		root: sourceRoot,
 		minify: true,
 		naming: "[dir]/[name].js",
+		watch: true,
 	});
 }
 console.log("Build complete.");
