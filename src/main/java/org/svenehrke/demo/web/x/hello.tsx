@@ -5,7 +5,7 @@ export function mountHello(elementId: string, name: string) {
 	if (!el) return;
 
 	function App() {
-		return <h1>Hello X {name}</h1>;
+		return <h1>Hello x {name}</h1>;
 	}
 
 	render(<App />, el);
