@@ -1,6 +1,7 @@
 package org.svenehrke.demo.web;
 
 import de.tschuehly.spring.viewcomponent.jte.ViewContext;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,10 @@ public class PagesController {
 
 	private final SimpleViewComponent simpleViewComponent;
 	private final JsonMapper jsonMapper;
+
+	@Value("${spring.profiles.active:}")
+	private String activeProfile;
+
 	public PagesController(
 		SimpleViewComponent simpleViewComponent,
 		JsonMapper jsonMapper
@@ -26,6 +31,7 @@ public class PagesController {
 
 	@GetMapping("/ui/pages/page1")
 	public String page1(Model model) {
+		model.addAttribute("devMode", activeProfile.contains("dev"));
 		model.addAttribute("greetee", "You");
 		record JJJ(String message){};
 		model.addAttribute("jjj", jsonMapper.writeValueAsString(
