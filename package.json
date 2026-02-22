@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "bun build.js",
-    "build0": "bun build src/main/java/org/svenehrke/demo/web --outdir dist --target browser",
-    "build:dev": "bun build src/main/java/org/svenehrke/demo/web --outdir dist --target browser --sourcemap --watch",
+    "watch": "bun watch.ts"
   },
   "dependencies": {
     "preact": "^10.28.3",
