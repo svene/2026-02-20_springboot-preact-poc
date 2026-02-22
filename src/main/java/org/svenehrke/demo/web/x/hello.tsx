@@ -1,7 +1,7 @@
 import { render, h } from "preact";
 
 function App(props: {message: string}) {
-	return <h1>Hello {props.message}</h1>;
+	return <p>Hello {props.message}</p>;
 }
 
 export {render, h, App}
