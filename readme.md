@@ -1,4 +1,6 @@
-= Hypermedia Driven Application using preact components
+# HDA using preact components
+
+Hypermedia Driven Application using preact components
 
 Proof of Concept for the architecture described
 by Thomas Schilling's https://tschuehly.de/preact-islands-in-spring-boot-with-htmx-when-alpinejs-isnt-enough-anymore[great article].

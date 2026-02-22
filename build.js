@@ -20,6 +20,7 @@ function collectTsxFiles(dir) {
 }
 
 async function runBuild() {
+	console.log(`Running complete build...`);
 	const entrypoints = collectTsxFiles(base);
 
 	for (const file of entrypoints) {

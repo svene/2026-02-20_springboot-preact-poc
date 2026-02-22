@@ -27,7 +27,5 @@
 <h1>Component tree (parent and child)</h1>
 <div data-island="x/parent" data-props="${jjj}"></div>
 <hr>
-
-<a href="/simple">Simple Component</a>
 </body>
 </html>

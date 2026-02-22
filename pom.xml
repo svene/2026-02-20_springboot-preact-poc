@@ -89,69 +89,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!-- bun install -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>3.1.0</version>
-				<executions>
-					<execution>
-						<id>bun-install</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>
-								${env.BUN_INSTALL}/bin/bun
-							</executable>
-							<arguments>
-								<argument>install</argument>
-							</arguments>
-						</configuration>
-					</execution>
-
-					<execution>
-						<id>bun-build</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<workingDirectory>
-								${project.basedir}/frontend
-							</workingDirectory>
-							<executable>
-								${env.BUN_INSTALL}/bin/bun
-							</executable>
-							<arguments>
-								<argument>run</argument>
-								<argument>build.ts</argument>
-							</arguments>
-						</configuration>
-					</execution>
-
-					<execution>
-						<id>bun-watch</id>
-						<phase>none</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<workingDirectory>${project.basedir}/frontend</workingDirectory>
-							<executable>${env.BUN_INSTALL}/bin/bun</executable>
-							<arguments>
-								<argument>run</argument>
-								<argument>watch.ts</argument>
-							</arguments>
-						</configuration>
-					</execution>
-
-				</executions>
-			</plugin>
-
-
 		</plugins>
 	</build>
 

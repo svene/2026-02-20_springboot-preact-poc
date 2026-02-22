@@ -1,6 +1,5 @@
 package org.svenehrke.demo.web;
 
-import de.tschuehly.spring.viewcomponent.jte.ViewContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,17 +9,12 @@ import tools.jackson.databind.json.JsonMapper;
 @Controller
 public class PagesController {
 
-	private final SimpleViewComponent simpleViewComponent;
 	private final JsonMapper jsonMapper;
 
 	@Value("${spring.profiles.active:}")
 	private String activeProfile;
 
-	public PagesController(
-		SimpleViewComponent simpleViewComponent,
-		JsonMapper jsonMapper
-	) {
-		this.simpleViewComponent = simpleViewComponent;
+	public PagesController(JsonMapper jsonMapper) {
 		this.jsonMapper = jsonMapper;
 	}
 
@@ -38,11 +32,6 @@ public class PagesController {
 			new JJJ("myJJJ")
 		));
 		return "pages/page1";
-	}
-
-	@GetMapping("/simple")
-	ViewContext simple() {
-		return simpleViewComponent.render();
 	}
 
 }

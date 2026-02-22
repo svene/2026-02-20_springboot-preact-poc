@@ -3,11 +3,7 @@ import {resolve} from "path";
 
 const scanRoot = resolve(import.meta.dir, "src/main/java");
 
-async function build(filename: string) {
-	if (!filename) {
-		return;
-	}
-	console.log(`${new Date().toLocaleTimeString()} BUILD ${filename}.`);
+async function build() {
 	const proc = Bun.spawn(["bun", "build.js"], {
 		cwd: import.meta.dir,
 		stdout: "inherit",
@@ -17,6 +13,7 @@ async function build(filename: string) {
 }
 
 async function main() {
+	await build();
 	console.log(`Watching ${scanRoot} for .tsx changes...`);
 
 	let debounce: Timer | null = null;
