@@ -1,3 +1,5 @@
+@param String greetee
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,8 @@
 </head>
 <body>
 <h1>Page 1</h1>
+
+<p>Hey ${greetee}</p>
 
 <a href="/simple">Simple Component</a>
 </body>
