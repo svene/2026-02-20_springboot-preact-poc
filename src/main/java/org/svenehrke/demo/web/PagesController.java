@@ -4,19 +4,19 @@ import de.tschuehly.spring.viewcomponent.jte.ViewContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 @Controller
 public class PagesController {
 
 	private final SimpleViewComponent simpleViewComponent;
-	private final ObjectMapper objectMapper;
+	private final JsonMapper jsonMapper;
 	public PagesController(
 		SimpleViewComponent simpleViewComponent,
-		ObjectMapper objectMapper
+		JsonMapper jsonMapper
 	) {
 		this.simpleViewComponent = simpleViewComponent;
-		this.objectMapper = objectMapper;
+		this.jsonMapper = jsonMapper;
 	}
 
 	@GetMapping("/")
@@ -28,7 +28,7 @@ public class PagesController {
 	public String page1(Model model) {
 		model.addAttribute("greetee", "You");
 		record JJJ(String message){};
-		model.addAttribute("jjj", objectMapper.writeValueAsString(
+		model.addAttribute("jjj", jsonMapper.writeValueAsString(
 			new JJJ("myJJJ")
 		));
 		return "pages/page1";
